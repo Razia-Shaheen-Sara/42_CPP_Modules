@@ -8,7 +8,7 @@ class Bureaucrat
     private:
         const std::string name;
         int               grade;
-        void  setGrade(int grade);
+        void  validateGrade(int grade);
 
     public:
 
