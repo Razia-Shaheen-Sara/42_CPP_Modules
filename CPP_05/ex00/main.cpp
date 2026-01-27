@@ -45,3 +45,13 @@ int main()
 
 	return 0;
 }
+
+
+//throw- try- catch:
+//✔ throw = stops execution immediately + jump to nearest catch
+//✔ destructors run automatically
+//✔ catch by reference ALWAYS (catch (const std::exception& e)) 
+// throw in code, catch in main
+//✔ use for errors only
+//✔ RAII = Resource Acquisition Is Initialization makes exceptions safe
+//When the object is destroyed, resources are automatically freed.

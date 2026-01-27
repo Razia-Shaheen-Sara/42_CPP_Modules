@@ -2,6 +2,9 @@
 #include <string>
 #include <iostream>
 #include <stdexcept>
+#include "Form.hpp"
+
+class Form;
 
 class Bureaucrat
 {
@@ -22,6 +25,7 @@ class Bureaucrat
     
         void		incrementGrade();
         void		decrementGrade();
+	    void		signForm(Form &source);//For this exercise
 
         class GradeTooHighException : public std::exception //nested class cause it is only used by Burocrat
         {
@@ -35,37 +39,5 @@ class Bureaucrat
         };
 };
 
-
-
 std::ostream &operator<<(std::ostream &output, const Bureaucrat &b);
 
-
-
-
-
-//New Concepts:
-//1. Error handling with exception class(Not strings)-
-//2. throw- try/catch for error(part of exception) instead of return
-//3. Initializer list -- needed when having "const" parameters before even construction
-
-
-//WHAT IS EXCEPTION?
-//Exception is a class inherited from std::exception library. this library stores all errors
-//
-//WHY IS IT NEEDED?
-//handling of errors by catch
-//prevent silent failures
-//guarantee cleanup
-//separate logic from error handling
-
-
-//what() is a function inherited from std::exception class library
-// what() is virtual in std::exception → enables polymorphism.
-//EXAMPLE:
-// NOT polymorphism (no virtual):
-// Base* b = new Derived();
-// b->func();        // calls Base::func()
-//
-// Polymorphism (virtual):
-// Base* b = new Derived();
-// b->func();        // calls Derived::func()

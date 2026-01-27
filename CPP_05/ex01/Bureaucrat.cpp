@@ -4,12 +4,6 @@
 ////what() is a function inherited from std::exception class library
 //const after what() means- this function does NOT modify the exception object
 //throw in the end means - this function will not throw another exception
-//Why what() returns const char*??
-//Because:
-//it must never fail
-//it must never allocate memory
-//it must be callable even during crashes
-//Returning std::string could throw
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
@@ -21,7 +15,6 @@ const char *Bureaucrat::GradeTooLowException::what() const throw()
 	return "Grade too low!";
 }
 
-//Use nested/custom exception class(custom for Bureaucrat here) if not needed by multiple classes
 void Bureaucrat::validateGrade(int grade)
 {
 	if (grade < 1)
@@ -30,10 +23,9 @@ void Bureaucrat::validateGrade(int grade)
 		throw Bureaucrat::GradeTooLowException();
 }
 
-
 // :name(name)  == :the member variable of the class(parameter passed to the constructor)
 //: name(name) initializes the member variable name with the value of the constructor parameter name before the constructor body runs.
-//have to use initializer cause name is const
+//have to use initializer outside {} cause name is const
 //cannot assign inside {} because const members can’t be assigned after creation.
 Bureaucrat::Bureaucrat(const std::string &name, int inputGrade):name(name), grade(inputGrade)
 {
@@ -85,4 +77,17 @@ std::ostream &operator<<(std::ostream &output, const Bureaucrat &b)
 {
 	output << b.getName() << ", bureaucrat grade " << b.getGrade() << std::endl;
 	return (output);
+}
+
+void Bureaucrat::signForm(Form &source)
+{
+	try
+	{
+		source.beSigned(*this);
+		std::cout << name << " signed " << source.getName() << std::endl;
+	}
+	catch(const Form::GradeTooLowException &e)
+	{
+		std::cout << name << " couldn’t sign " << source.getName() << " because " << e.what() << std::endl;
+	}
 }
