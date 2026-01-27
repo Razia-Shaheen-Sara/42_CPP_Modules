@@ -9,7 +9,7 @@ const char *Form::GradeTooHighException::what() const throw()
 
 const char *Form::GradeTooLowException::what() const throw() 
 { 
-    return "grade is too low to sign form";
+    return "grade is too low";
 }
 
 //Use nested/custom exception class(custom for Form here) if not needed by multiple classes
