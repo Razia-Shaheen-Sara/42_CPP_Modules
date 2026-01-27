@@ -4,12 +4,12 @@
 
 const char *Form::GradeTooHighException::what() const throw() 
 { 
-    return "Form grade is too high";
+    return "grade is too high";
 }
 
 const char *Form::GradeTooLowException::what() const throw() 
 { 
-    return "Form grade is too low";
+    return "grade is too low to sign form";
 }
 
 //Use nested/custom exception class(custom for Form here) if not needed by multiple classes

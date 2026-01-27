@@ -5,52 +5,76 @@
 int main()
 {
     std::cout << "--- TEST 1: FORM CREATION ---" << std::endl;
-    try
-    {
+    try 
+	{
         Form f1("TaxForm", 50, 20);
-        std::cout << f1 << std::endl;
-    }
-    catch (const std::exception &e)//catch by reference
-    {
+        std::cout << "Created: " << f1 << std::endl;
+    } 
+	catch (const std::exception &e) 
+	{
         std::cout << "Caught: " << e.what() << std::endl;
     }
 
-    std::cout << "--- TEST 2: SIGN FORM (SUCCESS) ---" << std::endl;
-    try
-    {
-        Bureaucrat b("Alice", 10);
-        Form f("Permit", 20, 5);
+    std::cout << "\n--- TEST 2: SUCCESSFUL SIGN ---" << std::endl;
+    try 
+	{
+        Bureaucrat alice("Alice", 10);
+        Form permit("Permit", 20, 5);
 
-        std::cout << f;
-        b.signForm(f);
-        std::cout << f;
-    }
-    catch (const std::exception &e)
-    {
+        std::cout << alice << std::endl;
+        std::cout << permit << std::endl;
+
+        alice.signForm(permit); // should succeed
+        std::cout << "After signing: " << permit << std::endl;
+    } 
+	catch (const std::exception &e) 
+	{
         std::cout << "Caught: " << e.what() << std::endl;
     }
 
-    std::cout << "--- TEST 3: SIGN FORM (FAIL) ---" << std::endl;
-    try
-    {
-        Bureaucrat b("Bob", 100);
-        Form f("Secret", 50, 10);
+    std::cout << "\n--- TEST 3: UNSUCCESSFUL SIGN ---" << std::endl;
+    try 
+	{
+        Bureaucrat bob("Bob", 100);
+        Form secret("Secret", 50, 10);
 
-        b.signForm(f); // should throw
-    }
-    catch (const std::exception &e)
-    {
+        std::cout << bob << std::endl;
+        std::cout << secret << std::endl;
+
+        bob.signForm(secret); // should throw GradeTooLow
+    } 
+	catch (const std::exception &e) 
+	{
         std::cout << "Caught: " << e.what() << std::endl;
     }
 
-    std::cout << "--- TEST 4: COPY & ASSIGN ---" << std::endl;
-    Form f1("Original", 30, 10);
-    Form f2 = f1;          // copy constructor
-    Form f3("Temp", 100, 100);
-    f3 = f1;               // assignment
+    std::cout << "\n--- TEST 4: INVALID FORM CREATION ---" << std::endl;
+    try 
+	{
+        Form tooHigh("InvalidHigh", 0, 100); // should throw GradeTooHigh
+    } 
+	catch (const std::exception &e) 
+	{
+        std::cout << "Caught: " << e.what() << std::endl;
+    }
 
-    std::cout << f2;
-    std::cout << f3;
+    try 
+	{
+        Form tooLow("InvalidLow", 151, 100); // should throw GradeTooLow
+    } 
+	catch (const std::exception &e) 
+	{
+        std::cout << "Caught: " << e.what() << std::endl;
+    }
+
+    std::cout << "\n--- TEST 5: COPY & ASSIGN ---" << std::endl;
+    Form original("Original", 30, 10);
+    Form copyForm = original;           // copy constructor
+    Form temp("Temp", 100, 100);
+    temp = original;                    // assignment
+
+    std::cout << "Copy constructed: " << copyForm << std::endl;
+    std::cout << "Assigned: " << temp << std::endl;
 
     return 0;
 }
