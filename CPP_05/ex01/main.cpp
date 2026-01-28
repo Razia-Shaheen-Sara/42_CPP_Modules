@@ -78,3 +78,9 @@ int main()
 
     return 0;
 }
+
+
+
+//Main point/concept:
+//Interaction message print between two classes (Bureaucrat ↔ Form)
+//who owns what()
