@@ -2,9 +2,9 @@
 #include <string>
 #include <iostream>
 #include <stdexcept>
-#include "Form.hpp"
 
-class Form;
+
+class AForm;//forward declaration to avoid circular dependency
 
 class Bureaucrat
 {
@@ -25,7 +25,8 @@ class Bureaucrat
     
         void		incrementGrade();
         void		decrementGrade();
-	    void		signForm(Form &source);//For this exercise
+	    void		signForm(AForm &source);//For this exercise
+        void        executeForm(const AForm &form) const;//For this exercise
 
         class GradeTooHighException : public std::exception //nested class cause it is only used by Burocrat
         {

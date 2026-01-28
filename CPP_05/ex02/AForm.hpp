@@ -4,7 +4,7 @@
 #include <iostream>
 #include "Bureaucrat.hpp"
 
-class Bureaucrat;
+class Bureaucrat;//forward declaration to avoid circular dependency
 
 class AForm
 {
@@ -38,7 +38,7 @@ public:
 	public:
 		virtual const char *what() const throw();
 	};
-	class FormNotSignedException : public std::exception
+	class FormNotSignedException : public std::exception //new exception for execute
 	{
 	public:
 		virtual const char *what() const throw();

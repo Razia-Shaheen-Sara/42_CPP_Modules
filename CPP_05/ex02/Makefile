@@ -1,4 +1,4 @@
-NAME = form
+NAME = forms
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++11
 
@@ -6,7 +6,7 @@ CC = c++
 
 OBJ_DIR = obj
 
-SRC = main.cpp Bureaucrat.cpp Form.cpp
+SRC = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 
 OBJECTS = $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 

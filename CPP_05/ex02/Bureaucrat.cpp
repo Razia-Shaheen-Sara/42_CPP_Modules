@@ -1,5 +1,6 @@
 
 #include "Bureaucrat.hpp"
+#include "AForm.hpp"
 
 ////what() is a function inherited from std::exception class library
 //const after what() means- this function does NOT modify the exception object
@@ -79,15 +80,28 @@ std::ostream &operator<<(std::ostream &output, const Bureaucrat &b)
 	return (output);
 }
 
-void Bureaucrat::signForm(Form &source)
+void Bureaucrat::signForm(AForm &source)
 {
 	try
 	{
 		source.beSigned(*this);
 		std::cout << name << " signed " << source.getName() << std::endl;
 	}
-	catch(const Form::GradeTooLowException &e)
+	catch(const AForm::GradeTooLowException &e)
 	{
 		std::cout << name << " couldn’t sign " << source.getName() << " because " << e.what() << std::endl;
+	}
+}
+
+void Bureaucrat::executeForm(const AForm &form) const
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << name << " executed " << form.getName() << std::endl;
+	}
+	catch (const std::exception &e)
+	{
+		std::cout << name << " couldn’t execute " << form.getName() << " because " << e.what() << std::endl;
 	}
 }
