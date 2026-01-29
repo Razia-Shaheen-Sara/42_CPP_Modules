@@ -55,9 +55,8 @@ std::ostream &operator <<(std::ostream &out, const AForm &source);
 //this phenomenon is polymorphism
 
 //WHY 0??
-//It means this function has no implementation here and MUST be implemented by child classes.
+//it means must be overridden + class is abstract
 //= 0 → pure virtual function
-//Pure virtual ⇒ the class becomes abstract
 //AForm is a blueprint only
 //You cannot do AForm f;
 //Any class inheriting AForm must implement execute()

@@ -77,3 +77,13 @@ std::ostream &operator << (std::ostream &out, const AForm &f)
         << ", execute grade " << f.getGradeToExecute() << "\n";
     return out;
 }
+
+
+//base behavior centralized here
+void AForm::execute(Bureaucrat const &executor) const
+{
+	if (!isSigned)
+		throw FormNotSignedException();
+	if (executor.getGrade() > gradeToExecute)
+		throw GradeTooLowException();
+}

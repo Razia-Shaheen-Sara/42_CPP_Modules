@@ -27,19 +27,11 @@ RobotomyRequestForm &RobotomyRequestForm::operator = (const RobotomyRequestForm 
 	return (*this);
 }
 
-//Makes some drilling noises, then informs that <target> has been robotomized successfully 50% of the time. Otherwise, it informs that the robotomy failed.
 void	RobotomyRequestForm::execute(const Bureaucrat &executor) const
 {
-	if (!getIsSigned()) 
-	{
-		throw FormNotSignedException();//implemented in AForm.cpp
-	}
-	if (executor.getGrade() > getGradeToExecute()) 
-	{
-		throw GradeTooLowException();
-	}
-	std::cout << "\n*******some drilling noises*******" << std::endl;
-	if ((std::rand() % 2) == 0)//gives either 0 or 1 randomly
+	AForm::execute(executor); //check base conditions
+	std::cout << "\n*******some drilling noises*******" << std::endl;//from subject
+	if ((std::rand() % 2) == 0)//gives either 0 or 1 randomly, 50% of the time
 	{
 		std::cout << getName() << " has been robotomized successfully!" << std::endl;
 		return;
