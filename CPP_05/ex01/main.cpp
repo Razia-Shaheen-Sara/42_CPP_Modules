@@ -2,6 +2,10 @@
 #include "Form.hpp"
 #include <iostream>
 
+//Tests: form creation with a sign grade and execute grade
+//successful and unsuccessful signing
+//invalid form creation (too high/low grades)
+
 int main()
 {
     std::cout << "--- TEST 1: FORM CREATION ---" << std::endl;
