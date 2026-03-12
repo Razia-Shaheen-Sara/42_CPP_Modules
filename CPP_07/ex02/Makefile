@@ -1,4 +1,4 @@
-NAME = 
+NAME = array
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++11
 
@@ -6,7 +6,7 @@ CC = c++
 
 OBJ_DIR = obj
 
-SRC = main.cpp .cpp
+SRC = main.cpp
 
 OBJECTS = $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 
