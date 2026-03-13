@@ -8,6 +8,8 @@
 //typename: also a C++ keyword.
 //It declares a type placeholder.
 
+//T is the name of that placeholder, could be XYZ or mytype or whatever
+
 template <typename T>
 void swap(T &a, T &b)
 {
