@@ -33,8 +33,13 @@ void testMutantStack()
 	for (; it != ite; ++it)
 		std::cout << "  value = " << *it << std::endl;
 }
+// Shows that your MutantStack still behaves like a normal stack:
+// push() adds elements to the top
+// top() shows the top element
+// pop() removes the top element
 
-void testList()
+
+void testList()//Confirms that MutantStack mimics a normal container when iterated.
 {
 	std::cout << "\n============== std::list Test =============" << std::endl;
 
