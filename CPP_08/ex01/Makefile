@@ -1,4 +1,4 @@
-NAME = 
+NAME = span
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++11
 
@@ -6,7 +6,7 @@ CC = c++
 
 OBJ_DIR = obj
 
-SRC = main.cpp
+SRC = main.cpp Span.cpp
 
 OBJECTS = $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 
