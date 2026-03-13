@@ -127,6 +127,18 @@ static void testOutOfBounds(Array<int>& arr)
 
 int main()
 {
+     std::cout << "TEST X: Subject tip - new int() vs new int\n";
+
+    int *a = new int();   // with ()
+    int *b = new int;     // without ()
+
+    std::cout << "*a (value-initialized) = " << *a << std::endl;
+    std::cout << "*b (default-initialized) = " << *b << " (may be garbage)" << std::endl;
+
+    delete a;
+    delete b;
+    
+    
     srand(time(NULL));
 
     printSeparator();
