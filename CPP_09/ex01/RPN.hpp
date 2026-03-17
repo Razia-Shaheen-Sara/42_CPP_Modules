@@ -4,6 +4,12 @@
 #include <stack>
 #include <string>
 
+#include <stack>
+
+// stack of integers // std::stack<int> s;
+
+// stack of strings // std::stack<std::string> s2;
+
 class RPN
 {
     private:

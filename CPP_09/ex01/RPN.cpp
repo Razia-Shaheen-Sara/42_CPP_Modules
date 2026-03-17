@@ -57,3 +57,8 @@ int RPN::evaluate(const std::string& expression)
         throw std::runtime_error("Error");
     return _stack.top();
 }
+
+
+//Why std::stack? Because the algorithm is LIFO (Last In First Out) — the last numbers pushed
+// are the first ones you use when you hit an operator.
+
