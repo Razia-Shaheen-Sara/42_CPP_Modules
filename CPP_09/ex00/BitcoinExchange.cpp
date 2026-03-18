@@ -132,7 +132,7 @@ void BitcoinExchange::processInput(const std::string& inputFile)
             std::cout << "Error: too large a number." << std::endl;
             continue;
         }
-        std::map<std::string, float>::iterator it = DtRtMap.lower_bound(date);
+        std::map<std::string, float>::iterator it = DtRtMap.lower_bound(date);//lower_bound returns an iterator to the first element that is not less than (i.e. greater or equal to) the given key (date).
         if (it == DtRtMap.end() || it->first != date)
         {
             if (it == DtRtMap.begin())
@@ -150,7 +150,7 @@ void BitcoinExchange::processInput(const std::string& inputFile)
 // it->second → value (rate corresponding to that date)
 // Multiply input value by the rate and print the result.
 //DtRtMap is a std::map (key = date, value = rate).
-//lower_bound(date) finds the first key in the map that is ≥ date.
+//lower_bound(date) from #include <algorithm> finds the first key in the map that is ≥ date.
 //Returns an iterator pointing to that element.
 //it == DtRtMap.end() → no key ≥ date exists (we are past the last element)
 //it->first != date → exact date wasn’t found, but it points to the next higher date
